@@ -16,6 +16,16 @@ export default function Home() {
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             To get started, edit the page.tsx file!!!.
           </h1>
+          <p>
+            Senior Web Engineer who builds high-impact, user-centered digital experiences.
+For 15+ years, I’ve been designing and engineering modern web solutions across the full stack: React, .NET, C#, ASP.NET, Shopify, Craft CMS, and more. My work blends engineering leadership, UI/UX intuition, accessibility standards, and AI-driven automation to create systems that scale.
+
+I lead projects end-to-end — from concept and prototyping to architecture, development, testing, and launch. I collaborate closely with designers, product, marketing, legal, QA, and executive teams to drive clarity, reduce risk, and deliver outcomes.
+
+Whether I’m rethinking an e-commerce-driven lead funnel, automating partner website generation for thousands of dealers, or building AI tools to improve accessibility and content quality, I focus on one thing:
+
+Delivering fast, intuitive, reliable experiences that make the web better — for users, developers, and businesses.
+          </p>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
             Looking for a starting point or more instructions? Head over to{" "}
             <a
