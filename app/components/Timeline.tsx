@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useTheme } from '@/app/context/ThemeContext';
 
 interface TimelineEvent {
   year: string;
@@ -10,26 +11,34 @@ interface TimelineEvent {
 
 const events: TimelineEvent[] = [
   {
-    year: '2009-2016',
-    title: 'Front-End Developer / Web Designer',
+    year: '2013-Current',
+    title: 'Front-End Developer / UX Designer',
     description: [
-      'Developed custom themes, marketing sites, and e-commerce experiences across HTML/CSS/JS, PHP, Shopify, and WordPress',
-      'Established strong UI/UX foundations, SEO practices, conversion strategy, and data-backed decision making',
-      'Began transitioning from design-focused work into engineering leadership and system-level architecture'
+      'Began transitioning from design-focused work into engineering leadership and full-stack development',
+      'Developed custom User Experiences from the ground up; lead generation and management systems, e-commerce platforms and marketing sites using C#/.NET, HTML/CSS/JS, PHP, Shopify and WordPress',
+      'Established strong UI/UX foundations, SEO practices, conversion strategy, accessibility standards and data-backed decision making',  
+      'Led multiple projects across various tech stacks, collaborating closely with cross-functional teams to deliver high-quality digital experiences',
+      'SEO optimization and performance improvements resulting in increased organic traffic and user engagement',
+      'Implemented accessibility best practices to ensure compliance with WCAG standards',
+      'Mentored junior developers and designers, fostering a collaborative and growth-oriented team environment',
+      'Leveraged AI tools to enhance development workflows and improve content quality'
     ],
   },
   {
-    year: '2015',
-    title: 'Full Stack Expertise',
+    year: '2010-2013',
+    title: 'Front-end Design and Development',
     description: [
-      'Mastered React and modern JavaScript frameworks',
-      'Deep expertise in .NET and C# backend systems',
-      'Architected scalable web applications'
+      'Designed and maintained websites and applications supporting various government agencies using SharePoint.',
+      'Lead front-end development efforts for multiple projects, implementing bug-free responsive design patterns and cross-browser compatibility.',
+      'Developed scalable User Interfaces with a focus on usability, accessibility, and performance optimization.',
+      'Collaborated with back-end developers to integrate front-end components with server-side logic.',
+      'Conducted user research and usability testing to inform design decisions and improve user experience.',
+      'Created wireframes, prototypes, and visual designs to effectively communicate design concepts to stakeholders.'
     ],
   },
   {
-    year: '2018',
-    title: 'Leadership Role',
+    year: '2002-2010',
+    title: 'Web Designer / Junior Developer',
     description: [
       'Led cross-functional engineering teams',
       'Mentored junior developers',
@@ -37,26 +46,19 @@ const events: TimelineEvent[] = [
     ],
   },
   {
-    year: '2020',
-    title: 'AI Integration',
+    year: 'If you go this far, thank you!',
+    title: '2026 and Beyond',
     description: [
-      'Integrated AI solutions for accessibility improvements',
-      'Built AI-driven content quality tools',
-      'Focused on ethical AI implementation'
+      'I am looking for a engineering or technical leadership role where I can leverage my development experience to help rapidly prototype and itterate on UI/UX focused solutions.',
+      'Create tools using agentic AI-driven systems that help optmize workflows between designers',
+      'Build systems that help catch and mitigate quality assurance and compliance related issues before they occur.'
     ],
   },
-  {
-    year: '2024',
-    title: 'Innovation Focus',
-    description: [
-      'Architecting next-generation digital experiences',
-      'Driving technical innovation and best practices',
-      'Building AI-powered solutions at scale'
-    ],
-  },
+ 
 ];
 
 export default function Timeline() {
+  const { theme } = useTheme();
   const [visibleIndices, setVisibleIndices] = useState<number[]>([]);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -119,10 +121,14 @@ export default function Timeline() {
                         <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
                           {event.year}
                         </span>
-                        <h3 className="text-2xl font-bold mt-2 text-black dark:text-white">
+                        <h3 className="text-2xl font-bold mt-2" style={{
+                          color: theme === 'dark' ? '#FFFFFF' : '#000000',
+                        }}>
                           {event.title}
                         </h3>
-                        <div className="text-left text-gray-600 dark:text-gray-400 mt-2">
+                        <div className="text-left mt-2" style={{
+                          color: theme === 'dark' ? '#FFFFFF' : '#4B5563',
+                        }}>
                           {typeof event.description === 'string' ? (
                             <p>{event.description}</p>
                           ) : (
@@ -144,10 +150,14 @@ export default function Timeline() {
                         <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
                           {event.year}
                         </span>
-                        <h3 className="text-2xl font-bold mt-2 text-black dark:text-white">
+                        <h3 className="text-2xl font-bold mt-2" style={{
+                          color: theme === 'dark' ? '#FFFFFF' : '#000000',
+                        }}>
                           {event.title}
                         </h3>
-                        <div className="text-gray-600 dark:text-gray-400 mt-2 text-left">
+                        <div className="mt-2 text-left" style={{
+                          color: theme === 'dark' ? '#FFFFFF' : '#4B5563',
+                        }}>
                           {typeof event.description === 'string' ? (
                             <p>{event.description}</p>
                           ) : (
@@ -168,10 +178,14 @@ export default function Timeline() {
                       <span className="text-sm font-semibold text-blue-600 dark:text-purple-400">
                         {event.year}
                       </span>
-                      <h3 className="text-xl font-bold mt-2 text-black dark:text-white text-left">
+                      <h3 className="text-xl font-bold mt-2 text-left" style={{
+                        color: theme === 'dark' ? '#FFFFFF' : '#000000',
+                      }}>
                         {event.title}
                       </h3>
-                      <div className="text-gray-600 dark:text-gray-400 mt-2 text-left text-sm">
+                      <div className="mt-2 text-left text-sm" style={{
+                        color: theme === 'dark' ? '#FFFFFF' : '#4B5563',
+                      }}>
                         {typeof event.description === 'string' ? (
                           <p>{event.description}</p>
                         ) : (
