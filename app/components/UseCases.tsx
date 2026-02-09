@@ -237,7 +237,19 @@ export default function UseCases() {
           />
         </Section>
 
-        <Placeholder label="Lead Flow Screenshots" />
+        <div style={{ marginTop: '40px', marginBottom: '40px' }}>
+          <video 
+            controls 
+            style={{ 
+              width: '100%', 
+              borderRadius: '8px',
+              boxShadow: theme === 'dark' ? '0 6px 18px rgba(0,0,0,0.6)' : '0 6px 18px rgba(31,41,55,0.06)',
+            }}
+          >
+            <source src="/shopify-demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <Section title="My Role">
           <BulletList
@@ -312,7 +324,18 @@ export default function UseCases() {
           </div>
         </Section>
 
-        <Placeholder label="Architecture Diagram: Hydrogen → C# API → Lead System" />
+        <div style={{ marginTop: '40px', marginBottom: '40px', display: 'flex', justifyContent: 'center' }}>
+          <img 
+            src="/shopify-hydrogen-architecture.png"
+            alt="Architecture diagram showing Hydrogen frontend connecting to C# API and Lead Management System"
+            style={{ 
+              maxWidth: '100%', 
+              height: 'auto',
+              borderRadius: '8px',
+              boxShadow: theme === 'dark' ? '0 6px 18px rgba(0,0,0,0.6)' : '0 6px 18px rgba(31,41,55,0.06)',
+            }}
+          />
+        </div>
 
         <Section title="Key Challenges">
           <div style={{ marginBottom: '16px' }}>
