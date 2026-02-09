@@ -127,15 +127,24 @@ export default function PageContent() {
                 >
                   Let's build high-impact, user-centered experiences.
                 </h1>
+                <p 
+                  className="mt-4 text-xs sm:text-sm leading-relaxed"
+                  style={{ 
+                    color: theme === 'dark' ? '#B9C3D1' : '#374151',
+                    fontFamily: 'var(--font-montserrat)'
+                  }}
+                >
+                  This site was designed and built by me using a modern full-stack workflow: React & Next.js, Tailwind CSS, and HTML/CSS/JavaScript, developed in Visual Studio with GitHub Copilot, versioned with Git, deployed on Vercel, and supported by a design pipeline using Photoshop - custom-built from the ground up with a focus on performance, accessibility and production-ready code.
+                </p>
                 <div className="flex gap-4 mt-2 w-full">
                   <a
                     href="https://github.com/asethii"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#23272f] text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#33363b] transition-colors duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A857]"
+                    className="inline-flex items-center px-2 py-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#23272f] text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#33363b] transition-colors duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A857] text-xs"
                     aria-label="GitHub"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.58.688.482C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z" />
                     </svg>
                     GitHub
@@ -144,10 +153,10 @@ export default function PageContent() {
                     href="https://www.linkedin.com/feed/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#23272f] text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#33363b] transition-colors duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A857]"
+                    className="inline-flex items-center px-2 py-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#23272f] text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#33363b] transition-colors duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A857] text-xs"
                     aria-label="LinkedIn"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z" />
                     </svg>
                     LinkedIn
@@ -326,7 +335,7 @@ export default function PageContent() {
             </div>
             
             <p>
-              For 15+ years, I have been designing and engineering modern web solutions across the full stack using React, C#/.NET, HTML/CSS, JavaScript, SQL, various CMS Systems (Wordpress, Craft, Shopify) and more. My work blends engineering leadership, management, UI/UX intuition, accessibility standards, and AI-driven automation to create systems that scale.
+              For 15+ years, I have been designing and engineering modern web solutions across the full stack using React, C#/.NET, HTML/CSS, JavaScript and SQL. My work blends engineering leadership, management, UI/UX intuition, accessibility standards, and AI-driven automation to create systems that scale.
             </p>
             <p>I lead projects end-to-end - from concept and prototyping to architecture, development, testing, and launch. I collaborate closely with designers, product, marketing, legal, QA, and executive teams to drive clarity, reduce risk, and deliver outcomes.</p>
             <p>Whether I'm rethinking an e-commerce-driven lead funnel, automating partner website generation for thousands of users, or building AI tools to improve accessibility and content quality, I focus on one thing:</p>
