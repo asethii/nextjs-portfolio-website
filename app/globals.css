@@ -12,6 +12,9 @@
   /* Reduce card padding on mobile */
   .card {
     padding: 1rem !important;
+    &.card-case {
+      padding: 0 !important;
+    }
   }
 }
 @import "tailwindcss";

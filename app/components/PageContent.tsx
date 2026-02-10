@@ -16,6 +16,10 @@ export default function PageContent() {
   const headshotRef = useRef<HTMLDivElement>(null);
   const parallaxContentRef = useRef<HTMLDivElement>(null);
   const [showScrollArrow, setShowScrollArrow] = useState(true);
+  const [contactSubject, setContactSubject] = useState('');
+  const [contactBody, setContactBody] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
 
 
@@ -150,7 +154,7 @@ export default function PageContent() {
                     GitHub
                   </a>
                   <a
-                    href="https://www.linkedin.com/feed/"
+                    href="https://www.linkedin.com/in/ashish-sethi-ui/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-2 py-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#23272f] text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#33363b] transition-colors duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4A857] text-xs"
@@ -336,15 +340,16 @@ export default function PageContent() {
               </div>
             </div>
             <p>
-              For 15+ years, I have been designing and engineering modern web solutions across the <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>full stack</strong> using React, C#/.NET, HTML/CSS, JavaScript and SQL. My work blends <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>engineering leadership, management, UI/UX intuition, accessibility standards, and AI-driven automation</strong> to create systems that scale.
+              For 15+ years, I have been designing and engineering modern web solutions across the <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>full stack</strong> using React, C#/.NET, HTML/CSS, JavaScript and SQL. My work blends <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>engineering leadership, management, UI/UX intuition, accessibility standards and AI-driven automation</strong> to create systems that scale.
             </p>
-            <p>I <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>lead projects</strong> end-to-end - from <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>concept and prototyping to architecture, development, testing and launch</strong>. I collaborate closely with designers, product, marketing, legal, QA, and executive teams to drive clarity, reduce risk, and deliver outcomes.</p>
+            <p>I <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>lead projects</strong> end-to-end - from <strong style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>concept and prototyping to architecture, development, testing and launch</strong>. I collaborate closely with designers, product, marketing, legal, QA, and executive teams to drive clarity, reduce risk and deliver outcomes.</p>
             {/*<p>Whether I'm rethinking an e-commerce-driven lead funnel, automating partner website generation for thousands of users, or building AI tools to improve accessibility and content quality, I focus on one thing:</p>*/}
            
-              <h2 className='text-xl font-bold text-center mb-16' style={{
+              <p className='text-xl font-bold text-center mb-16' style={{
           color: theme === 'dark' ? '#D4A857' : '#000000',
-        }}>Delivering fast, intuitive, reliable experiences that make the web better - for users, developers and businesses.</h2>
+        }}>Delivering fast, intuitive, reliable experiences that make the web better - for users, developers and businesses.</p>
             
+            <h3 className="text-lg font-semibold mt-8 text-center" style={{ color: theme === 'dark' ? '#D4A857' : '#0F172A' }}>Live Examples</h3>
             <ClientOnly>
               <ImageCarousel />
             </ClientOnly>
@@ -440,6 +445,157 @@ export default function PageContent() {
           </ClientOnly>
         </main>
       </div>
+
+      {/* Contact Form Section */}
+      <div 
+        className="py-20 px-4"
+        style={{
+          backgroundColor: theme === 'dark' ? '#181A20' : '#FAF8F6',
+        }}
+      >
+        <div className="max-w-2xl mx-auto">
+          <h2
+            className="text-4xl font-bold text-center mb-8"
+            style={{
+              color: theme === 'dark' ? '#D4A857' : '#292C34',
+            }}
+          >
+            Get In Touch
+          </h2>
+          <p
+            className="text-center mb-12 text-lg"
+            style={{
+              color: theme === 'dark' ? '#B0B8C3' : '#666',
+            }}
+          >
+            Contact form powered by a serverless API route and transactional email service (no mailto).
+          </p>
+          
+          <form 
+            className="space-y-6"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setIsSubmitting(true);
+              setSubmitMessage('');
+
+              try {
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    subject: contactSubject,
+                    body: contactBody,
+                  }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                  setSubmitMessage('Email sent successfully!');
+                  setContactSubject('');
+                  setContactBody('');
+                } else {
+                  setSubmitMessage(data.error || 'Failed to send email. Please try again.');
+                }
+              } catch (error) {
+                console.error('Form submission error:', error);
+                setSubmitMessage('An error occurred. Please try again.');
+              } finally {
+                setIsSubmitting(false);
+              }
+            }}
+          >
+            <div>
+              <label 
+                htmlFor="subject" 
+                className="block text-sm font-medium mb-2"
+                style={{
+                  color: theme === 'dark' ? '#D0D8E0' : '#444',
+                }}
+              >
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                value={contactSubject}
+                onChange={(e) => setContactSubject(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2"
+                style={{
+                  backgroundColor: theme === 'dark' ? '#1F2229' : '#FFFFFF',
+                  borderColor: theme === 'dark' ? '#3A4252' : '#E5E0DA',
+                  color: theme === 'dark' ? '#D0D8E0' : '#444',
+                }}
+                placeholder="What's this about?"
+                required
+              />
+            </div>
+            
+            <div>
+              <label 
+                htmlFor="message" 
+                className="block text-sm font-medium mb-2"
+                style={{
+                  color: theme === 'dark' ? '#D0D8E0' : '#444',
+                }}
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                value={contactBody}
+                onChange={(e) => setContactBody(e.target.value)}
+                rows={6}
+                className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 resize-vertical"
+                style={{
+                  backgroundColor: theme === 'dark' ? '#1F2229' : '#FFFFFF',
+                  borderColor: theme === 'dark' ? '#3A4252' : '#E5E0DA',
+                  color: theme === 'dark' ? '#D0D8E0' : '#444',
+                }}
+                placeholder="Tell me more about your opportunity..."
+                required
+              />
+            </div>
+            
+            <div className="text-center">
+              {submitMessage && (
+                <p 
+                  className="mb-4 text-sm"
+                  style={{
+                    color: submitMessage.includes('successfully') 
+                      ? '#10B981' 
+                      : '#EF4444',
+                  }}
+                >
+                  {submitMessage}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-8 py-3 text-white font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{
+                  backgroundColor: theme === 'dark' ? '#D4A857' : '#D4A857',
+                  border: 'none',
+                  boxShadow: theme === 'dark' ? '0 4px 14px rgba(212, 168, 87, 0.3)' : '0 4px 14px rgba(212, 168, 87, 0.2)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = theme === 'dark' ? '#B8860B' : '#B8860B';
+                  e.currentTarget.style.boxShadow = theme === 'dark' ? '0 6px 20px rgba(212, 168, 87, 0.4)' : '0 6px 20px rgba(212, 168, 87, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = theme === 'dark' ? '#D4A857' : '#D4A857';
+                  e.currentTarget.style.boxShadow = theme === 'dark' ? '0 4px 14px rgba(212, 168, 87, 0.3)' : '0 4px 14px rgba(212, 168, 87, 0.2)';
+                }}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Email'}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
@@ -485,7 +641,7 @@ function HeroGridHighlights() {
     },
     {
       title: "Workflow",
-      text: "Have modern workflows (Git, automation)",
+      text: "Have modern workflows (Git, AI assisted automation)",
       icon: IconGitBranch,
       iconColor: theme === 'dark' ? '#FDBA74' : '#EA580C',
       iconBg: theme === 'dark' ? 'rgba(253, 186, 116, 0.08)' : 'rgba(255, 237, 213, 0.8)',

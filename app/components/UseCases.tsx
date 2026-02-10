@@ -26,6 +26,7 @@ export default function UseCases() {
     const isExpanded = expandedCase === caseNum;
     return (
       <div
+        className="card card-case"
         style={{
           backgroundColor: theme === 'dark' ? '#252B35' : '#F5F3F0',
           borderRadius: '8px',
@@ -42,8 +43,7 @@ export default function UseCases() {
             padding: '24px',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center',
-            backgroundColor: theme === 'dark' ? '#1F2229' : '#FFFFFF',
+            alignItems: 'center',            
             border: 'none',
             cursor: 'pointer',
             transition: 'all 0.3s ease',
@@ -96,6 +96,7 @@ export default function UseCases() {
 
         {isExpanded && (
           <div
+            className="card-content"
             style={{
               padding: '32px',
               backgroundColor: theme === 'dark' ? '#252B35' : '#F5F3F0',
@@ -159,8 +160,9 @@ export default function UseCases() {
       {items.map((item, idx) => (
         <li
           key={idx}
+          className="text-sm"
           style={{
-            marginBottom: '12px',
+            marginBottom: '0px',
             paddingLeft: '24px',
             position: 'relative',
             lineHeight: '1.6',
@@ -219,11 +221,238 @@ export default function UseCases() {
       {/* Case Study 1 */}
       <CaseStudyCard
         caseNum={1}
+        title="Enterprise Public Website Redesign, CMS Replatforming & Cloud Migration"
+        subtitle="Modernizing Alarm.com's High-Traffic Marketing Platform"
+      >
+        <Section title="Background & Challenges">
+          <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+            Alarm.com's public website evolved over time and needed to support:
+          </p>
+          <BulletList
+            items={[
+              'A legacy C# / .NET website hosted on IIS',
+              'A full redesign and migration to a modern CMS',
+              'Strict security, legal, and compliance requirements',
+              'Multiple production domains (alarm.com and www.alarm.com)',
+              'High availability, SEO preservation, and brand trust',
+              'A future-ready architecture capable of cloud migration',
+            ]}
+          />
+          <p className="text-sm" style={{ marginTop: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            This work required careful coordination across engineering, DevOps, marketing, legal, security, and product teams.
+          </p>
+        </Section>
+
+        <Placeholder label="Application Architecture Diagram" />
+
+        <Section title="My Role">
+          <BulletList
+            items={[
+              'Led front-end engineering for public marketing website redesign',
+              'Maintained and enhanced legacy C# / .NET platform on IIS',
+              'Architected CMS migration strategy and implementation',
+              'Managed Bitbucket + Git workflows and deployment processes',
+              'Coordinated DNS, subdomain architecture, and canonical strategies',
+              'Participated in security reviews and vulnerability remediation',
+              'Partnered with DevOps on AWS cloud migration',
+              'Acted as technical bridge between application code and infrastructure',
+            ]}
+          />
+        </Section>
+
+        <Section title="The Solution">
+          <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+            ✓ Legacy Platform (Pre-CMS)
+          </h5>
+          <BulletList
+            items={[
+              'Maintained and enhanced C# / .NET public website',
+              'Developed and managed site locally using IIS',
+              'Supported traditional ASP.NET workflows prior to CMS adoption',
+              'Ensured stability while preparing for future redesign',
+            ]}
+          />
+
+          <div style={{ marginTop: '16px' }}>
+            <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+              ✓ CMS Redesign & Replatforming
+            </h5>
+            <BulletList
+              items={[
+                'Rebuilt public marketing site using Craft CMS (PHP) and MySQL',
+                'Designed reusable, component-driven templates for long-term maintainability',
+                'Enabled marketing teams to publish content through structured, governed workflows',
+                'Maintained accessibility and usability standards throughout redesign',
+              ]}
+            />
+          </div>
+
+          <div style={{ marginTop: '16px' }}>
+            <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+              ✓ Source Control & Deployment Workflow
+            </h5>
+            <BulletList
+              items={[
+                'Used Bitbucket + Git for version control',
+                'Automated deployments to Development and Test environments',
+                'Managed controlled, manual production releases to ensure uptime',
+                'Coordinated database synchronization and content parity across environments',
+                'Acted as primary engineering partner during release cycles',
+              ]}
+            />
+          </div>
+
+          <div style={{ marginTop: '16px' }}>
+            <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+              ✓ DNS, Subdomain & Server Architecture
+            </h5>
+            <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+              One of the most complex aspects was maintaining dual production domains:
+            </p>
+            <div
+              style={{
+                backgroundColor: theme === 'dark' ? '#1F2229' : '#FFF8F5',
+                padding: '12px',
+                borderRadius: '4px',
+                fontFamily: 'monospace',
+                fontSize: '13px',
+                marginBottom: '12px',
+                color: theme === 'dark' ? '#B0B8C3' : '#444',
+                overflow: 'auto',
+              }}
+            >
+              <code>https://alarm.com</code><br />
+              <code>https://www.alarm.com</code>
+            </div>
+            <BulletList
+              items={[
+                'Supported marketing brand recognition without SEO duplication',
+                'Coordinated DNS, redirects, and canonical strategies',
+                'Worked with infrastructure teams to prevent indexing, caching, or routing issues',
+                'Ensured seamless user experience across domains during and after CMS rollout',
+              ]}
+            />
+            <p className="text-sm" style={{ marginTop: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+              This experience directly parallels large public-sector and government web environments with legacy URL requirements.
+            </p>
+          </div>
+        </Section>
+
+        <Placeholder label="DNS Architecture Diagram" />
+
+        <Section title="Security, Compliance & Governance">
+          <BulletList
+            items={[
+              'Participated in external third-party security reviews',
+              'Debugged and remediated reported vulnerabilities',
+              'Implemented fixes aligned with security and compliance recommendations',
+              'Supported regular legal and compliance reviews',
+              'Ensured content and feature releases passed formal approval workflows',
+            ]}
+          />
+          <p className="text-sm" style={{ marginTop: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            These processes reinforced a strong engineering culture around risk management, documentation, and audit readiness.
+          </p>
+        </Section>
+
+        <Section title="Cloud Migration: On-Prem → AWS">
+          <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+            After several years of platform stability, the site underwent a lift-and-shift migration to AWS.
+          </p>
+          <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', marginTop: '16px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+            Migration Characteristics
+          </h5>
+          <BulletList
+            items={[
+              'No application rewrite; focus on infrastructure transition',
+              'Zero-downtime and minimal risk strategy',
+              'Emphasis on operational continuity and verification',
+            ]}
+          />
+          <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', marginTop: '16px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+            My Role in the Migration
+          </h5>
+          <BulletList
+            items={[
+              'Partnered closely with DevOps engineers',
+              'Assisted with environment variable configuration',
+              'Debugged runtime and CMS behavior differences post-migration',
+              'Troubleshot deployment and configuration issues',
+              'Verified feature parity, content integrity, and performance',
+              'Acted as technical bridge between application code and cloud infrastructure',
+            ]}
+          />
+        </Section>
+
+        <Placeholder label="AWS Cloud Architecture Diagram" />
+
+        <Section title="Cross-Functional Collaboration">
+          <p style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+            Worked continuously with:
+          </p>
+          <BulletList
+            items={[
+              'Marketing – content strategy and launch coordination',
+              'Legal & Compliance – approvals and regulatory review',
+              'Security teams – third-party audits and remediation',
+              'Product teams – feature alignment and messaging',
+              'DevOps – deployments, DNS, and cloud migration',
+            ]}
+          />
+          <p className="text-sm" style={{ marginTop: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            This collaboration ensured successful delivery in a high-trust, highly visible public environment.
+          </p>
+        </Section>
+
+        <Section title="Key Challenges">
+          <div style={{ marginBottom: '16px' }}>
+            <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+              1. Dual Domain Architecture
+            </p>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+              Managing two production domains without SEO penalties required sophisticated DNS configuration and careful redirect strategies.
+            </p>
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+              2. Zero-Downtime Migration
+            </p>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+              Transitioning from IIS to Craft CMS, then to AWS, while maintaining 24/7 availability for a high-traffic public site.
+            </p>
+          </div>
+          <div>
+            <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
+              3. Security & Compliance Requirements
+            </p>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+              Balancing rapid iteration with formal security reviews, legal approvals, and vulnerability remediation cycles.
+            </p>
+          </div>
+        </Section>
+
+        <Section title="Results & Impact">
+          <BulletList
+            items={[
+              'Modernized mission-critical public website without loss of SEO or uptime',
+              'Improved publishing velocity while maintaining governance and compliance',
+              'Successfully transitioned from IIS / .NET → CMS → AWS',
+              'Delivered stable platform supporting years of ongoing growth',
+              'Established patterns for enterprise-scale web governance and cloud readiness',
+              'Maintained accessibility standards across entire platform lifecycle',
+            ]}
+          />
+        </Section>
+      </CaseStudyCard>
+
+      {/* Case Study 2 */}
+      <CaseStudyCard
+        caseNum={2}
         title="Shopify Liquid → Hydrogen Migration"
         subtitle="Rebuilding a High-Conversion Lead Flow Using React"
       >
         <Section title="The Problem">
-          <p style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+          <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
             Marketing needed a modern, conversion-focused experience to drive higher-quality leads. The initial Shopify Liquid prototype hit critical walls:
           </p>
           <BulletList
@@ -355,7 +584,7 @@ export default function UseCases() {
             <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               1. Re-engineering Wizards in React
             </p>
-            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }} className="text-sm">
               Had to re-architect logic, transitions, validation, and UX flows to be dynamic and maintainable.
             </p>
           </div>
@@ -363,7 +592,7 @@ export default function UseCases() {
             <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               2. Last-Minute Stripe Pivot
             </p>
-            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }} className="text-sm">
               Legal flagged Shopify's checkout limitations late. Integrated an entirely new payment API while balancing stakeholder urgency, legal compliance, and deployment schedule.
             </p>
           </div>
@@ -371,7 +600,7 @@ export default function UseCases() {
             <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               3. Automated Testing Architecture
             </p>
-            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }} className="text-sm">
               Liquid made testing nearly impossible. React + Playwright enabled full UI automation, dramatically reducing regressions.
             </p>
           </div>
@@ -391,14 +620,14 @@ export default function UseCases() {
         </Section>
       </CaseStudyCard>
 
-      {/* Case Study 2 */}
+      {/* Case Study 3 */}
       <CaseStudyCard
-        caseNum={2}
+        caseNum={3}
         title="Automated Partner Website Generator"
         subtitle="Dynamic, Scalable .NET System Serving Thousands of Dealers"
       >
         <Section title="The Problem">
-          <p style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+          <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
             Thousands of Alarm.com partners (dealers) needed to establish an online presence quickly without dedicated web teams. Marketing required:
           </p>
           <BulletList
@@ -411,7 +640,7 @@ export default function UseCases() {
               'Reliable lead capture and routing',
             ]}
           />
-          <p style={{ marginTop: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+          <p className="text-sm" style={{ marginTop: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
             The solution had to scale to thousands of variations with a single code base—no manual website creation.
           </p>
         </Section>
@@ -437,7 +666,7 @@ export default function UseCases() {
           <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
             ✓ Custom Routing Layer
           </h5>
-          <p style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+          <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
             A wildcard routing system mapped every dealer URL to a single template:
           </p>
           <div
@@ -514,7 +743,7 @@ export default function UseCases() {
             <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               1. Combinatorial UI Explosion
             </p>
-            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }} className="text-sm">
               Hundreds of feature combinations, languages, and brand variants required a test matrix, automated UI tests, caching safeguards, and meticulous conditional logic.
             </p>
           </div>
@@ -522,7 +751,7 @@ export default function UseCases() {
             <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               2. Localization Boundaries
             </p>
-            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }} className="text-sm">
               Translated text often exceeded UI boundaries. Implemented rules and length checks to prevent layout breaks.
             </p>
           </div>
@@ -530,7 +759,7 @@ export default function UseCases() {
             <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               3. Backwards Compatibility
             </p>
-            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }} className="text-sm">
               Supporting new redesigns, legacy templates, and custom layouts for high-value dealers—all on a single .aspx file—required deep planning.
             </p>
           </div>
@@ -538,7 +767,7 @@ export default function UseCases() {
             <p style={{ fontWeight: '600', marginBottom: '8px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               4. Multi-page UX in Single Page
             </p>
-            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p style={{ marginLeft: '0', color: theme === 'dark' ? '#B0B8C3' : '#666' }} className="text-sm">
               Built URL query-string logic, content block switching, and SEO-safe internal routing to support new flows without breaking existing architecture.
             </p>
           </div>
@@ -559,14 +788,14 @@ export default function UseCases() {
         </Section>
       </CaseStudyCard>
 
-      {/* Case Study 3 */}
+      {/* Case Study 4 */}
       <CaseStudyCard
-        caseNum={3}
+        caseNum={4}
         title="Custom Icon Font + Accessibility Governance"
         subtitle="AI Automation for Developers & Marketing Teams"
       >
         <Section title="The Problem">
-          <p style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+          <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
             Alarm.com faced two interconnected challenges:
           </p>
           <div style={{ marginBottom: '16px' }}>
@@ -633,7 +862,7 @@ export default function UseCases() {
             <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               ✓ Automated Accessibility Scanner
             </h5>
-            <p style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+            <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
               Triggered automatically on every pull request. Scanned:
             </p>
             <BulletList
@@ -643,7 +872,7 @@ export default function UseCases() {
                 'Enforced WCAG 2.1 AA compliance',
               ]}
             />
-            <p style={{ marginTop: '12px', marginBottom: '12px', lineHeight: '1.6' }}>
+            <p className="text-sm" style={{ marginTop: '12px', marginBottom: '12px', lineHeight: '1.6' }}>
               Output:
             </p>
             <BulletList
@@ -653,7 +882,7 @@ export default function UseCases() {
                 'Auto-logged tickets when devs deferred fixes',
               ]}
             />
-            <p style={{ marginTop: '12px', marginBottom: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p className="text-sm" style={{ marginTop: '12px', marginBottom: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
               Impact: Caught issues early, reduced QA burden, improved consistency company-wide.
             </p>
           </div>
@@ -662,7 +891,7 @@ export default function UseCases() {
             <h5 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '10px', color: theme === 'dark' ? '#D4A857' : '#292C34' }}>
               ✓ AI-Powered Content Wizard
             </h5>
-            <p style={{ marginBottom: '12px', lineHeight: '1.6' }}>
+            <p className="text-sm" style={{ marginBottom: '12px', lineHeight: '1.6' }}>
               Marketing inputs content type, audience, keywords, and tone. System outputs:
             </p>
             <BulletList
@@ -673,7 +902,7 @@ export default function UseCases() {
                 'Dozens of content variations for A/B testing',
               ]}
             />
-            <p style={{ marginTop: '12px', marginBottom: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
+            <p className="text-sm" style={{ marginTop: '12px', marginBottom: '12px', lineHeight: '1.6', color: theme === 'dark' ? '#B0B8C3' : '#666' }}>
               Impact: 3x faster content velocity, fewer legal escalations, improved quality and compliance.
             </p>
           </div>
