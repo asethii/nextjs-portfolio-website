@@ -137,12 +137,12 @@ export default function ImageCarousel() {
   };
 
   const startAutoRotate = () => {
-    autoRotateTimer.current = setInterval(() => {
+    //autoRotateTimer.current = setInterval(() => {
       // Only auto-rotate if in view, not hovering, video not playing, and user not interacting
-      if (isInView && !isHovering && !isVideoPlaying && !isInteracting) {
-        setCurrentIndex((prev) => (prev + 1) % slides.length);
-      }
-    }, 5000);
+    //  if (isInView && !isHovering && !isVideoPlaying && !isInteracting) {
+    //    setCurrentIndex((prev) => (prev + 1) % slides.length);
+    //  }
+    //}, 5000);
   };
 
   useEffect(() => {
@@ -296,69 +296,28 @@ export default function ImageCarousel() {
                         priority={index === 0}
                       />
                     )}
-                    {/* View Live Button for active slide */}
-                    {isActive && slide.url && slide.url.trim() !== '' && (
-                      <div className="absolute left-1/2 -translate-x-1/2 bottom-2 flex justify-center w-full z-40">
-                        <a
-                          href={slide.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-transform duration-150 mr-3 mb-3"
-                          style={{
-                            backgroundColor: theme === 'dark' ? '#21211e' : '#FEF3C7',
-                            color: theme === 'dark' ? '#D4A857' : '#92400E',
-                            cursor: 'pointer',
-                            boxShadow: 'none',
-                          }}
-                          onMouseEnter={e => {
-                            (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
-                            (e.currentTarget as HTMLElement).style.boxShadow = theme === 'dark' ? '0 6px 14px rgba(0,0,0,0.6)' : '0 6px 14px rgba(2,6,23,0.06)';
-                          }}
-                          onMouseLeave={e => {
-                            (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-                            (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                          }}
-                        >
-                          <span className="pr-2">View Live</span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="inline align-text-bottom"
-                          >
-                            <path d="M14 3h7v7" />
-                            <path d="M5 19l14-14" />
-                            <path d="M5 5v14h14" />
-                          </svg>
-                        </a>
-                      </div>
-                    )}
                   </div>
                 );
               })}
             </div>
           </div>
 
-          {/* Navigation Buttons */}
+        </div>
+        {/* Controls Row - Left Arrow, View Live Button, Right Arrow */}
+        <div className="flex justify-center items-center mt-6 mb-6 gap-[30px]">
+          {/* Left Arrow Button */}
           <button
             onClick={handlePrev}
             aria-label="Previous image"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 p-2 rounded-full transition-all duration-200 hover:opacity-100"
+            className="p-2 rounded-full transition-all duration-200 hover:opacity-80"
             style={{
               opacity: 0.7,
-              backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)',
-              backdropFilter: 'blur(4px)',
+              backgroundColor: 'transparent',
             }}
           >
             <svg
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke={theme === 'dark' ? '#D4A857' : '#292C34'}
@@ -370,19 +329,61 @@ export default function ImageCarousel() {
             </svg>
           </button>
 
+          {/* View Live Button */}
+          {slides[currentIndex].url && slides[currentIndex].url.trim() !== '' && (
+            <a
+              href={slides[currentIndex].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-transform duration-150"
+              style={{
+                backgroundColor: theme === 'dark' ? '#21211e' : '#FEF3C7',
+                color: theme === 'dark' ? '#D4A857' : '#92400E',
+                cursor: 'pointer',
+                boxShadow: 'none',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
+                (e.currentTarget as HTMLElement).style.boxShadow = theme === 'dark' ? '0 6px 14px rgba(0,0,0,0.6)' : '0 6px 14px rgba(2,6,23,0.06)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+              }}
+            >
+              <span className="pr-2">View Live</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="inline align-text-bottom"
+              >
+                <path d="M14 3h7v7" />
+                <path d="M5 19l14-14" />
+                <path d="M5 5v14h14" />
+              </svg>
+            </a>
+          )}
+
+          {/* Right Arrow Button */}
           <button
             onClick={handleNext}
             aria-label="Next image"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 p-2 rounded-full transition-all duration-200 hover:opacity-100"
+            className="p-2 rounded-full transition-all duration-200 hover:opacity-80"
             style={{
               opacity: 0.7,
-              backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)',
-              backdropFilter: 'blur(4px)',
+              backgroundColor: 'transparent',
             }}
           >
             <svg
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke={theme === 'dark' ? '#D4A857' : '#292C34'}
