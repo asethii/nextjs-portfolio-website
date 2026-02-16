@@ -426,7 +426,7 @@ export default function PageContent() {
 
             
       {/* Enterprise & Government Web Experience Section */}
-      <div className="w-full flex justify-center pt-8 pb-8">
+      <div className="w-full flex justify-center pt-8 pb-8 relative z-10">
         <section
           className="card w-full max-w-4xl px-4 p-6 rounded-lg"
           style={{
@@ -451,7 +451,7 @@ export default function PageContent() {
       </div>
 
       {/* Cloud Migration Experience Callout */}
-      <div className="w-full flex justify-center pb-8">
+      <div className="w-full flex justify-center pb-8 relative z-10">
         <section
           className="card w-full max-w-4xl px-4 p-6 rounded-lg"
           style={{
@@ -479,7 +479,7 @@ export default function PageContent() {
 
       {/* Section 3: Timeline - Full Viewport with Extra Spacing */}
       <div 
-        className="w-full min-h-screen flex items-center justify-center pt-20 pb-20"
+        className="w-full min-h-screen flex items-center justify-center pt-20 pb-20 relative z-10"
         style={{
           backgroundColor: theme === 'dark' ? '#181A20' : '#FAF8F6',
         }}
@@ -497,7 +497,7 @@ export default function PageContent() {
       {/* Section 4: Use Cases */}
       <div 
         
-        className="min-h-screen flex items-center justify-center pt-20 pb-20"
+        className="min-h-screen flex items-center justify-center pt-20 pb-20 relative z-10"
         style={{
           backgroundColor: theme === 'dark' ? '#181A20' : '#FAF8F6',
         }}
@@ -516,7 +516,7 @@ export default function PageContent() {
 
       {/* Contact Form Section */}
       <div 
-        className="py-20 px-4"
+        className="py-20 px-4 relative z-10"
         style={{
           backgroundColor: theme === 'dark' ? '#181A20' : '#FAF8F6',
         }}
