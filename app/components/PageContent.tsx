@@ -25,6 +25,7 @@ export default function PageContent() {
   const [submitMessage, setSubmitMessage] = useState('');
   const [showLanguagesCard, setShowLanguagesCard] = useState(false);
   const [showToolsCard, setShowToolsCard] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
 
 
 
@@ -81,6 +82,16 @@ export default function PageContent() {
     return () => observer.disconnect();
   }, []);
 
+  // Detect desktop vs mobile for conditional rendering
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
 
   return (
@@ -99,7 +110,7 @@ export default function PageContent() {
         }}
       >
         <ClientOnly>
-          <TubesCursor />
+          {isDesktop && <TubesCursor />}
         </ClientOnly>
         <main 
           className="flex h-full w-full max-w-3xl flex-col items-center justify-center px-16 pt-0 sm:pt-auto relative z-10"
