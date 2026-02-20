@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Aboreto, Fraunces } from "next/font/google";
 import { ThemeProvider } from "./context/ThemeContext";
+import { MUIProviders } from "./MUIProviders";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -47,9 +48,11 @@ export default function RootLayout({
         className={`${montserrat.variable} ${aboreto.variable} ${fraunces.variable} antialiased`}
         style={{ fontFamily: 'var(--font-montserrat)' }}
       >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <MUIProviders>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </MUIProviders>
       </body>
     </html>
   );
